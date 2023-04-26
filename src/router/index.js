@@ -56,6 +56,37 @@ export const constantRoutes = [
   },
 
   {
+    path: '/vod',
+    component: Layout, //layout 表示你的布局
+    redirect: '/vod/teacher/list', //跳转
+    name: 'vod',
+    meta: { title: '点播管理', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'teacher/list',
+        name: 'teacherList',
+        //在框架中约定 页面都写到views中
+        component: () => import('@/views/vod/teacher/list'), //表示点这个路径 跳转到那个页面
+        meta: { title: '讲师列表', icon: 'table' }
+      },
+      {
+        path: 'teacher/create',
+        name: 'TeacherCreate',
+        component: () => import('@/views/vod/teacher/form'),
+        meta: { title: '添加讲师', icon: 'tree' }
+      },
+      {
+        path: 'teacher/edit/:id',
+        name: 'TeacherEdit',
+        component: () => import('@/views/vod/teacher/form'),
+        meta: { title: '编辑讲师' },
+        //隐藏
+        hidden: true
+      }
+    ]
+  },
+
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
