@@ -56,6 +56,13 @@ export default {
           data: idList
         })
     },
+    //所有讲师
+    list() {
+      return request({
+        url: `${api_name}/findAll`,
+        method: `get`
+      })
+    },
 }
 
 

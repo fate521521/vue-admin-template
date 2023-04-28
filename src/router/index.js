@@ -60,7 +60,7 @@ export const constantRoutes = [
     component: Layout, //layout 表示你的布局
     redirect: '/vod/teacher/list', //跳转
     name: 'vod',
-    meta: { title: '点播管理', icon: 'el-icon-s-help' },
+    meta: { title: '讲师管理', icon: 'el-icon-s-help' },
     children: [
       {
         path: 'teacher/list',
@@ -81,6 +81,72 @@ export const constantRoutes = [
         component: () => import('@/views/vod/teacher/form'),
         meta: { title: '编辑讲师' },
         //隐藏
+        hidden: true
+      }
+    ]
+  },
+
+  {
+    path: '/subject',
+    component: Layout,
+    redirect: '/subject/list',
+    name: '课程分类管理',
+    alwaysShow: true,
+    meta: { title: '课程分类管理', icon: 'example' },
+    children: [
+      {
+        path: 'list',
+        name: '课程分类列表',
+        component: () => import('@/views/vod/subject/list'),
+        meta: { title: '课程分类列表', icon: 'table' }
+      }
+    ]
+  },
+
+  // 课程管理
+  {
+    path: '/vodcourse',
+    component: Layout,
+    redirect: '/vodcourse/course/list',
+    name: 'Vodcourse',
+    meta: {
+      title: '点播管理',
+      icon: 'el-icon-bank-card'
+    },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'course/list',
+        name: 'CourseList',
+        component: () => import('@/views/vod/course/list'),
+        meta: { title: '课程列表', icon: 'table' }
+      },
+      {
+        path: 'course/info',
+        name: 'CourseInfo',
+        component: () => import('@/views/vod/course/form'),
+        meta: { title: '发布课程' },
+        hidden: true
+      },
+      {
+        path: 'course/info/:id',
+        name: 'CourseInfoEdit',
+        component: () => import('@/views/vod/course/form'),
+        meta: { title: '编辑课程' },
+        hidden: true
+      },
+      {
+        path: 'course/chapter/:id',
+        name: 'CourseChapterEdit',
+        component: () => import('@/views/vod/course/form'),
+        meta: { title: '编辑大纲' },
+        hidden: true
+      },
+      {
+        path: 'course/chart/:id',
+        name: 'CourseChart',
+        component: () => import('@/views/vod/course/chart'),
+        meta: { title: '课程统计' },
         hidden: true
       }
     ]

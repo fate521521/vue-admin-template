@@ -27,7 +27,9 @@ module.exports = {
   publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
-  lintOnSave: process.env.NODE_ENV === 'development',
+  // lintOnSave 在保存的时候会执行代码检查 就没有警告和错误了
+  // lintOnSave: process.env.NODE_ENV === 'development', 
+  lintOnSave: false,
   productionSourceMap: false,
   devServer: {
     port: port,
